@@ -27,13 +27,15 @@ rm -rf /tmp/barbaras-update && mkdir -p /tmp/barbaras-update
 unzip -oq "$ZIP" -d /tmp/barbaras-update
 rm -rf /tmp/barbaras-update/__MACOSX
 
-# Site root = folder holding the shallowest .html file (zip may wrap files in a folder)
-FIRST="$(find /tmp/barbaras-update -name '*.html' | awk -F/ '{print NF"\t"$0}' | sort -n | head -1 | cut -f2-)"
-if [ -z "$FIRST" ]; then
+# Site root: step into wrapper folders until we reach real content (zip may wrap files in a folder)
+SRC=/tmp/barbaras-update
+while [ "$(ls -A "$SRC" | wc -l | tr -d ' ')" = "1" ] && [ -d "$SRC/$(ls -A "$SRC")" ] && [ "$(ls -A "$SRC")" != "assets" ]; do
+  SRC="$SRC/$(ls -A "$SRC")"
+done
+if [ -z "$(find "$SRC" -type f | head -1)" ]; then
   echo "No site files found in the download."
   read -n 1 -s -r -p "Press any key to close..."; exit 1
 fi
-SRC="$(dirname "$FIRST")"
 
 COUNT=0
 while IFS= read -r -d '' f; do
@@ -41,7 +43,7 @@ while IFS= read -r -d '' f; do
   mkdir -p "$REPO/$(dirname "$rel")"; cp "$f" "$REPO/$rel"
   echo "  updated: $rel"
   COUNT=$((COUNT+1))
-done < <(find "$SRC" -type f \( -name '*.html' -o -name '*.js' -o -name '*.pdf' -o -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.webp' -o -name '*.ico' -o -name '*.json' -o -name '*.xml' -o -name '*.txt' -o -name '*.ics' -o -name '*.command' \) -print0)
+done < <(find "$SRC" -type f \( -name '*.html' -o -name '*.js' -o -name '*.pdf' -o -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.webp' -o -name '*.ico' -o -name '*.json' -o -name '*.xml' -o -name '*.txt' -o -name '*.ics' -o -name '*.command' -o -name '.gitignore' \) -print0)
 chmod +x "$REPO/update-site.command" 2>/dev/null || true
 
 "$GIT" add -A
