@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /portal.html
+Disallow: /portal-limited.html
+Disallow: /cheat-sheet.html
+Disallow: /staff-cheat-sheet.html
+Disallow: /handbook.html
+Disallow: /waiver.html
+Disallow: /photo-release.html
+Disallow: /season-calendar.html
+Sitemap: https://www.barbarasdancestudio.com/sitemap.xml

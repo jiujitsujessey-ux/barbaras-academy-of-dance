@@ -1,0 +1,694 @@
+{
+  "_readme": "Studio-editable site data. Edit via the admin page (admin.html) — changes auto-publish in about a minute.",
+  "announcement": {
+    "show": true,
+    "text": "2026/27 Schedule now available — Fall registration is open — classes begin in September",
+    "linkText": "Reserve your dancer's spot →",
+    "linkHref": "register.html"
+  },
+  "season": "2026/27",
+  "events": [
+    {
+      "month": "August",
+      "when": "Wed · Aug 12",
+      "title": "Open House!",
+      "type": "event",
+      "note": "Try a class · Tour the studio · Refreshments"
+    },
+    {
+      "month": "September",
+      "when": "",
+      "title": "Classes begin!",
+      "type": "milestone",
+      "note": "The 2026/27 season in underway!"
+    },
+    {
+      "month": "September",
+      "when": "Mon · Sept 8",
+      "title": "Labor Day",
+      "type": "closed",
+      "note": ""
+    },
+    {
+      "month": "October",
+      "when": "Mon · Oct 26",
+      "title": "Recital costume deposits due",
+      "type": "due",
+      "note": "$85 per class · Trio $180 · Combo $90"
+    },
+    {
+      "month": "October",
+      "when": "Fri · Oct 31",
+      "title": "Studio closed — Halloween",
+      "type": "closed",
+      "note": ""
+    },
+    {
+      "month": "November",
+      "when": "Nov 24–29",
+      "title": "Studio closed — Thanksgiving break",
+      "type": "closed",
+      "note": ""
+    },
+    {
+      "month": "December",
+      "when": "Dec 21 – Jan 3",
+      "title": "Studio closed — Holiday break",
+      "type": "closed",
+      "note": ""
+    },
+    {
+      "month": "January",
+      "when": "Mon · Jan 4",
+      "title": "Classes resume",
+      "type": "milestone",
+      "note": ""
+    },
+    {
+      "month": "January",
+      "when": "Mon · Jan 18",
+      "title": "Studio closed — MLK observance",
+      "type": "closed",
+      "note": ""
+    },
+    {
+      "month": "February",
+      "when": "Feb 13–19",
+      "title": "Studio closed — Mid-winter break",
+      "type": "closed",
+      "note": ""
+    },
+    {
+      "month": "March / April",
+      "when": "Mar 26 – Apr 4",
+      "title": "Studio closed — Spring break",
+      "type": "closed",
+      "note": ""
+    },
+    {
+      "month": "May",
+      "when": "Sat · May 1",
+      "title": "Recital tickets on sale",
+      "type": "tickets",
+      "note": ""
+    },
+    {
+      "month": "May",
+      "when": "Mid-May",
+      "title": "Picture days at Barbara’s Academy",
+      "type": "event",
+      "note": "Photographer: Barbara’s Academy alumna Mati Ficara"
+    },
+    {
+      "month": "May",
+      "when": "May 28–31",
+      "title": "Studio closed — Memorial weekend",
+      "type": "closed",
+      "note": ""
+    },
+    {
+      "month": "June",
+      "when": "Date TBA",
+      "title": "Dress rehearsal",
+      "type": "performance",
+      "note": ""
+    },
+    {
+      "month": "June",
+      "when": "Date TBA",
+      "title": "Year-end recital",
+      "type": "performance",
+      "note": "The night every dancer works toward!"
+    }
+  ],
+  "galleryExtra": [],
+  "summerFlyers": [
+    {
+      "src": "https://static.wixstatic.com/media/da8048_c7fe2a077e754dbb94a9b05b7a9aede0~mv2.jpg",
+      "thumb": "https://static.wixstatic.com/media/da8048_c7fe2a077e754dbb94a9b05b7a9aede0~mv2.jpg/v1/fit/w_900,h_1200,q_85/flyer7.jpg",
+      "date": "",
+      "endDate": "",
+      "hidden": false
+    },
+    {
+      "src": "https://static.wixstatic.com/media/da8048_9bab417b34ab476ab8f921be044e5b90~mv2.jpg",
+      "thumb": "https://static.wixstatic.com/media/da8048_9bab417b34ab476ab8f921be044e5b90~mv2.jpg/v1/fit/w_900,h_1200,q_85/flyer6.jpg",
+      "date": "",
+      "endDate": "",
+      "hidden": false
+    },
+    {
+      "src": "https://static.wixstatic.com/media/da8048_50e1a23abba543f0b05cd2e8b19377b0~mv2.jpg",
+      "thumb": "https://static.wixstatic.com/media/da8048_50e1a23abba543f0b05cd2e8b19377b0~mv2.jpg/v1/fit/w_900,h_1200,q_85/flyer3.jpg",
+      "date": "",
+      "endDate": "",
+      "hidden": false
+    },
+    {
+      "src": "https://static.wixstatic.com/media/da8048_105688ab24274af0a790bbd59c69a278~mv2.jpg",
+      "thumb": "https://static.wixstatic.com/media/da8048_105688ab24274af0a790bbd59c69a278~mv2.jpg/v1/fit/w_900,h_1200,q_85/flyer4.jpg",
+      "date": "",
+      "endDate": "",
+      "hidden": false
+    },
+    {
+      "src": "https://static.wixstatic.com/media/da8048_1e6cb505687942b9b5dba24bd7e6ed31~mv2.jpg",
+      "thumb": "https://static.wixstatic.com/media/da8048_1e6cb505687942b9b5dba24bd7e6ed31~mv2.jpg/v1/fit/w_900,h_1200,q_85/flyer5.jpg",
+      "date": "",
+      "endDate": "",
+      "hidden": false
+    },
+    {
+      "src": "https://static.wixstatic.com/media/da8048_7f924c8d325840408080d0bf45441e03~mv2.jpg",
+      "thumb": "https://static.wixstatic.com/media/da8048_7f924c8d325840408080d0bf45441e03~mv2.jpg/v1/fit/w_900,h_1200,q_85/flyer1.jpg",
+      "date": "",
+      "endDate": "",
+      "hidden": false
+    },
+    {
+      "src": "https://static.wixstatic.com/media/da8048_08ce02adf4964b37a78b3869f454ed38~mv2.jpg",
+      "thumb": "https://static.wixstatic.com/media/da8048_08ce02adf4964b37a78b3869f454ed38~mv2.jpg/v1/fit/w_900,h_1200,q_85/flyer2.jpg",
+      "date": "",
+      "endDate": "",
+      "hidden": false
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "The instruction and attention to detail Ms. Bebe provides is unmatched. My daughters both learned not only exceptional dance technique, but also confidence and resilience.",
+      "who": "Laura S. · Barbara’s Academy family for 23 years · Google review"
+    },
+    {
+      "quote": "The training is serious, but the teachers know every child by name. That mix of discipline and warmth is why we’ve stayed for years.",
+      "who": "Barbara’s Academy parent · company family"
+    },
+    {
+      "quote": "Watching her on stage at the recital — confident, smiling, prepared — was worth every single Tuesday drive.",
+      "who": "Barbara’s Academy parent · recreational classes"
+    }
+  ],
+  "nutcracker": {
+    "show": false,
+    "text": "",
+    "linkText": "Get tickets",
+    "linkHref": ""
+  },
+  "classSchedules": [
+    {
+      "name": "Preschool Combo & Trio",
+      "rows": [
+        {
+          "when": "Mon · 5:30–6:15",
+          "what": "Combo · Ballet/Tap · ages 3–5½"
+        },
+        {
+          "when": "Wed · 4:45–6:00",
+          "what": "Trio · Ballet/Tap/Jazz · ages 5½–9"
+        },
+        {
+          "when": "Wed · 5:30–6:15",
+          "what": "Combo · Ballet/Tap · ages 3–5½"
+        },
+        {
+          "when": "Sat · 9:30–10:15",
+          "what": "Combo · Ballet/Jazz · ages 3–5½"
+        },
+        {
+          "when": "Sat · 10:15–11:30",
+          "what": "Trio · Ballet/Tap/Jazz · ages 5½–9"
+        },
+        {
+          "when": "Thu · 1:30–2:15",
+          "what": "Combo · Ballet/Tap · ages 3–5½"
+        }
+      ]
+    },
+    {
+      "name": "Ballet",
+      "rows": [
+        {
+          "when": "Mon · 6:45–7:45",
+          "what": "Intermediate · ages 13–18"
+        },
+        {
+          "when": "Tue · 5:30–6:15",
+          "what": "Continuing · ages 9–12"
+        },
+        {
+          "when": "Wed · 8:15–9:00 pm",
+          "what": "Adult ballet"
+        },
+        {
+          "when": "Thu · 4:45–5:30",
+          "what": "Continuing · ages 7–11"
+        }
+      ]
+    },
+    {
+      "name": "Pointe",
+      "rows": [
+        {
+          "when": "Mon · 7:45–8:30",
+          "what": "Intermediate · ages 13–18"
+        },
+        {
+          "when": "Thu · 7:00–7:30",
+          "what": "Pointe 1 & 2 · ages 11–16"
+        }
+      ]
+    },
+    {
+      "name": "Tap",
+      "rows": [
+        {
+          "when": "Mon · 6:15–6:45",
+          "what": "Intermediate · ages 13–18"
+        },
+        {
+          "when": "Tue · 4:30–5:00",
+          "what": "Continuing · ages 9–12"
+        },
+        {
+          "when": "Wed · 9:00–9:30 pm",
+          "what": "Adult tap"
+        },
+        {
+          "when": "Thu · 5:30–6:00",
+          "what": "Continuing · ages 7–11"
+        }
+      ]
+    },
+    {
+      "name": "Jazz",
+      "rows": [
+        {
+          "when": "Tue · 5:00–5:30",
+          "what": "Continuing · ages 9–12"
+        },
+        {
+          "when": "Wed · 6:45–7:45",
+          "what": "Continuing · ages 13–18"
+        },
+        {
+          "when": "Thu · 6:00–6:30",
+          "what": "Continuing · ages 7–11"
+        }
+      ]
+    },
+    {
+      "name": "Lyrical",
+      "rows": [
+        {
+          "when": "Mon · 4:30–5:00",
+          "what": "Beginner · ages 6–10"
+        },
+        {
+          "when": "Tue · 6:15–7:00",
+          "what": "Continuing · ages 9–12"
+        },
+        {
+          "when": "Wed · 6:00–6:45",
+          "what": "Intermediate · ages 13–18"
+        },
+        {
+          "when": "Thu · 6:30–7:00",
+          "what": "Continuing · ages 7–11"
+        }
+      ]
+    },
+    {
+      "name": "Contemporary",
+      "rows": []
+    },
+    {
+      "name": "Hip-Hop",
+      "rows": [
+        {
+          "when": "Mon · 5:00–5:30",
+          "what": "Hip Hop Kidz · ages 6–10"
+        },
+        {
+          "when": "Tue · 7:00–7:30",
+          "what": "Continuing · ages 9–12"
+        },
+        {
+          "when": "Wed · 7:45–8:15",
+          "what": "Ages 13–18"
+        },
+        {
+          "when": "Wed · 9:30–10:00 pm",
+          "what": "Adult hip-hop"
+        },
+        {
+          "when": "Tue · 6:15–6:45",
+          "what": "Boys Hip Hop · ages 6–11"
+        },
+        {
+          "when": "Thu · 7:00–7:30",
+          "what": "Ages 7–11"
+        },
+        {
+          "when": "Sat · 11:30–12:00",
+          "what": "Ages 6–10"
+        }
+      ]
+    },
+    {
+      "name": "Acro",
+      "rows": [
+        {
+          "when": "Wed · 6:15–7:00",
+          "what": "Beginner · ages 5½–9"
+        },
+        {
+          "when": "Thu · 2:15–2:45",
+          "what": "Beginning · ages 3½–6"
+        },
+        {
+          "when": "Thu · 7:30–8:00",
+          "what": "Continuing · ages 7–11"
+        },
+        {
+          "when": "Sat · 12:00–12:45",
+          "what": "Ages 6–10"
+        },
+        {
+          "when": "Mon · 6:00–6:45",
+          "what": "Continuing · ages 7–11"
+        }
+      ]
+    }
+  ],
+  "schedVersion": 3,
+  "classTags": [
+    [
+      "Combo · 3–5½",
+      "Trio · 5½–9",
+      "Enhanced Trio · 7–10"
+    ],
+    [
+      "Ages 7–10",
+      "10–13",
+      "13–18",
+      "Adult"
+    ],
+    [
+      "Pointe 1 & 2 · 11–16",
+      "Intermediate · 13–18"
+    ],
+    [
+      "Ages 7–10",
+      "10–13",
+      "13–18",
+      "Adult"
+    ],
+    [
+      "Ages 7–10",
+      "10–13",
+      "13–18"
+    ],
+    [
+      "Beginning · 6–10",
+      "7–10",
+      "10–13",
+      "13–18"
+    ],
+    [
+      "Trio · 5½–9",
+      "Company · by audition"
+    ],
+    [
+      "Kidz · 6–10",
+      "Boys · 6–11",
+      "10–13",
+      "13–18",
+      "Adult"
+    ],
+    [
+      "Beginning · 3½–6",
+      "6–10",
+      "7–11"
+    ]
+  ],
+  "gallery": [
+    {
+      "src": "gal-umbrella.jpg",
+      "caption": "Performing Company",
+      "wide": true
+    },
+    {
+      "src": "gal-whiteblue.jpg",
+      "caption": "Lyrical",
+      "wide": false
+    },
+    {
+      "src": "gal-herogrp.jpg",
+      "caption": "Lyrical",
+      "wide": true
+    },
+    {
+      "src": "gal-blushleap.jpg",
+      "caption": "Lyrical",
+      "wide": false
+    },
+    {
+      "src": "gal-blueduet.jpg",
+      "caption": "Tiny Dancers",
+      "wide": false
+    },
+    {
+      "src": "gal-pinkfive.jpg",
+      "caption": "Contemporary",
+      "wide": true
+    },
+    {
+      "src": "gal-candy.jpg",
+      "caption": "Tiny Dancers",
+      "wide": false
+    },
+    {
+      "src": "gal-rainbow.jpg",
+      "caption": "Hip-Hop",
+      "wide": false
+    },
+    {
+      "src": "gal-tinypink.jpg",
+      "caption": "Lyrical",
+      "wide": false
+    },
+    {
+      "src": "gal-teamfull.jpg",
+      "caption": "Competition Team",
+      "wide": true
+    },
+    {
+      "src": "gal-whitetilt.jpg",
+      "caption": "Contemporary",
+      "wide": false
+    },
+    {
+      "src": "gal-navydress.jpg",
+      "caption": "Lyrical",
+      "wide": false
+    },
+    {
+      "src": "gal-navybend.jpg",
+      "caption": "Lyrical",
+      "wide": false
+    },
+    {
+      "src": "gal-lavender.jpg",
+      "caption": "Lyrical",
+      "wide": true
+    },
+    {
+      "src": "gal-pinkpink.jpg",
+      "caption": "Contemporary",
+      "wide": false
+    },
+    {
+      "src": "gal-hiphop.jpg",
+      "caption": "Hip-Hop",
+      "wide": false
+    },
+    {
+      "src": "gal-jazzkick.jpg",
+      "caption": "Jazz",
+      "wide": false
+    },
+    {
+      "src": "gal-royalblue.jpg",
+      "caption": "Junior Company",
+      "wide": true
+    },
+    {
+      "src": "gal-pinkjazz.jpg",
+      "caption": "Jazz",
+      "wide": true
+    },
+    {
+      "src": "gal-tutu.jpg",
+      "caption": "First Recital",
+      "wide": false
+    },
+    {
+      "src": "gal-oversplit.jpg",
+      "caption": "Technique",
+      "wide": false
+    },
+    {
+      "src": "gal-greyleap.jpg",
+      "caption": "Lyrical",
+      "wide": false
+    },
+    {
+      "src": "gal-yellowsolo.jpg",
+      "caption": "Lyrical",
+      "wide": false
+    },
+    {
+      "src": "gal-blueplank.jpg",
+      "caption": "Contemporary",
+      "wide": false
+    },
+    {
+      "src": "gal-redchairs.jpg",
+      "caption": "Performing Company",
+      "wide": true
+    },
+    {
+      "src": "gal-tiltkick2.jpg",
+      "caption": "Contemporary",
+      "wide": false
+    },
+    {
+      "src": "gal-redsplit.jpg",
+      "caption": "Contemporary",
+      "wide": false
+    },
+    {
+      "src": "gal-duo.jpg",
+      "caption": "Duet",
+      "wide": false
+    },
+    {
+      "src": "gal-trio.jpg",
+      "caption": "Trio",
+      "wide": false
+    },
+    {
+      "src": "gal-triosit.jpg",
+      "caption": "Seniors",
+      "wide": false
+    },
+    {
+      "src": "gal-creamtrio.jpg",
+      "caption": "Duet",
+      "wide": false
+    },
+    {
+      "src": "gal-teammini.jpg",
+      "caption": "Mini Team",
+      "wide": true
+    },
+    {
+      "src": "gal-whitekick.jpg",
+      "caption": "Contemporary",
+      "wide": false
+    },
+    {
+      "src": "gal-blackpointe.jpg",
+      "caption": "Ballet",
+      "wide": false
+    },
+    {
+      "src": "gal-yellowgrp.jpg",
+      "caption": "Lyrical",
+      "wide": true
+    },
+    {
+      "src": "gal-whiteatt.jpg",
+      "caption": "Contemporary",
+      "wide": false
+    },
+    {
+      "src": "gal-tapfeather.jpg",
+      "caption": "Tap",
+      "wide": false
+    },
+    {
+      "src": "gal-tealtap.jpg",
+      "caption": "Tap",
+      "wide": true
+    },
+    {
+      "src": "gal-younggrp.jpg",
+      "caption": "Young Dancers",
+      "wide": true
+    },
+    {
+      "src": "gal-navyunitard.jpg",
+      "caption": "Contemporary",
+      "wide": false
+    },
+    {
+      "src": "gal-stsplit.jpg",
+      "caption": "Contemporary",
+      "wide": false
+    },
+    {
+      "src": "gal-bridge.jpg",
+      "caption": "Acro",
+      "wide": false
+    },
+    {
+      "src": "gal-teamjr.jpg",
+      "caption": "Junior Team",
+      "wide": true
+    },
+    {
+      "src": "gal-recital5.jpg",
+      "caption": "Recital Day",
+      "wide": true
+    },
+    {
+      "src": "gal-pinklyr.jpg",
+      "caption": "Lyrical",
+      "wide": true
+    },
+    {
+      "src": "gal-handstand.jpg",
+      "caption": "Acro",
+      "wide": false
+    },
+    {
+      "src": "gal-srchairs.jpg",
+      "caption": "Senior Company",
+      "wide": true
+    },
+    {
+      "src": "gal-teamsr.jpg",
+      "caption": "Senior Team",
+      "wide": true
+    }
+  ],
+  "pageText": {
+    "home.heroSub": "Ballet, tap, jazz, hip-hop and more for ages 3–18 — taught with the warmth of a small studio and the standards of a serious one, for 40 years and counting.",
+    "home.about": "Today it’s still led by founder and owner Barbara Hatch — “Miss Barb” to generations of dancers — alongside director and company choreographer Barbara Bouchard, who Miss Barb has announced will carry the studio forward as its next owner, and a faculty families know by name. Our dance family spans tiny dancers taking their first steps to company dancers preparing their Nutcracker solos — and we’d love to welcome yours.",
+    "classes.intro": "From a first preschool combo class to pointe work and championship hip-hop — every class builds on a strong ballet foundation, taught by the faculty families know by name.",
+    "classes.desc0": "Two or three styles in one class, sized for little attention spans. Combo pairs ballet with tap or jazz; Trio adds a third style as dancers grow — the gentlest possible start.",
+    "classes.desc1": "Barre, center, and classical technique — the discipline underneath every other style we teach, and the reason our dancers move the way they do.",
+    "classes.desc2": "The milestone every ballet dancer works toward. By teacher invitation once ankles and technique are ready — strength first, satin second.",
+    "classes.desc3": "Rhythm, musicality, and fast feet — from first shuffles to intricate combinations. The class you hear from the lobby.",
+    "classes.desc4": "Energy, precision, and performance style — leaps, turns, and the showmanship that carries straight onto the competition stage.",
+    "classes.desc5": "Where ballet technique meets storytelling — expressive, flowing movement set to the music your dancer already loves.",
+    "classes.desc6": "Modern movement, floor work, and improvisation layered over classical training. Taught within our Saturday Trio and throughout company choreography.",
+    "classes.desc7": "Grooves, isolations, and full-out choreography — the style with a class for nearly every age, including one just for the boys.",
+    "classes.desc8": "Tumbling, flexibility, and controlled strength — cartwheels to walkovers and beyond, taught safely and step by step.",
+    "summer.sub": "Keep dancing all summer long — from princess camps for the littlest dancers to technique intensives for company kids. Tap any flyer for the full details, then register through the portal.",
+    "nutcracker.lede": "Every other holiday season, Barbara’s Academy of Dance brings Clara, the Land of Sweets, and a stage full of snow to Farmington Hills — with a cast that spans the entire studio family, from our tiniest angels to the Performing Company.",
+    "register.intro": "All students register each season — it takes a few minutes in the Parent Portal, and the office confirms your dancer’s spot.",
+    "contact.phone": "(248) 476-7074",
+    "contact.email": "barbarasdance2@gmail.com"
+  }
+}

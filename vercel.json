@@ -1,0 +1,15 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/pivot",
+      "destination": "/hillsidedance",
+      "permanent": true
+    },
+    {
+      "source": "/pivot.html",
+      "destination": "/hillsidedance",
+      "permanent": true
+    }
+  ]
+}
