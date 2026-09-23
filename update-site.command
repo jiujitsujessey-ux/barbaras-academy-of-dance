@@ -1,12 +1,11 @@
 #!/bin/bash
 # update-site.command — Barbara’s Academy of Dance site updater
-# Lives in your barbaras-site repo folder. Double-click after downloading a new
-# barbaras-site zip from Claude to ~/Downloads. It copies the new pages in,
-# commits, and pushes — Vercel redeploys automatically.
+# Double-click after downloading a site update zip from Claude to ~/Downloads.
+# It copies the new pages in, commits, and pushes — Vercel redeploys automatically.
 set -e
 cd "$(dirname "$0")"
+REPO="$(pwd)"
 
-# Locate git (falls back to GitHub Desktop's bundled copy)
 GIT="$(command -v git || true)"
 if [ -z "$GIT" ]; then
   GIT="/Applications/GitHub Desktop.app/Contents/Resources/app/git/bin/git"
@@ -16,33 +15,35 @@ if [ ! -x "$GIT" ]; then
   read -n 1 -s -r -p "Press any key to close..."; exit 1
 fi
 
-# Find the newest downloaded bundle (zip or unzipped folder)
-SRC=""
-ZIP="$(ls -t "$HOME/Downloads"/barbaras-site*.zip 2>/dev/null | head -1)"
-if [ -n "$ZIP" ]; then
-  rm -rf /tmp/barbaras-update && mkdir -p /tmp/barbaras-update
-  unzip -oq "$ZIP" -d /tmp/barbaras-update
-  SRC=/tmp/barbaras-update
-elif [ -d "$HOME/Downloads/barbaras-site" ]; then
-  SRC="$HOME/Downloads/barbaras-site"
-else
-  echo "No barbaras-site zip or folder found in ~/Downloads."
+# Newest matching zip in Downloads
+ZIP="$(ls -t "$HOME/Downloads"/barbaras-site*.zip "$HOME/Downloads"/Barbara*Website*.zip 2>/dev/null | head -1 || true)"
+if [ -z "$ZIP" ]; then
+  echo "No update zip found in ~/Downloads."
+  echo "(Looking for barbaras-site*.zip or Barbara's Academy of Dance Website*.zip)"
   read -n 1 -s -r -p "Press any key to close..."; exit 1
 fi
+echo "Using: $(basename "$ZIP")"
+rm -rf /tmp/barbaras-update && mkdir -p /tmp/barbaras-update
+unzip -oq "$ZIP" -d /tmp/barbaras-update
+rm -rf /tmp/barbaras-update/__MACOSX
 
-# Copy every page and asset (html, pdf, images) into the repo
-COUNT=0
-while IFS= read -r -d '' f; do
-  rel="${f#$SRC/}"; rel="${rel#barbaras-site/}"; mkdir -p "$(dirname "$rel")"; cp "$f" "$rel"
-  echo "  updated: $(basename "$f")"
-  COUNT=$((COUNT+1))
-done < <(find "$SRC" \( -name '*.html' -o -name '*.js' -o -name '*.pdf' -o -name '*.png' -o -name '*.jpg' -o -name '*.ico' -o -name '*.json' -o -name '*.xml' -o -name '*.txt' -o -name '*.ics' \) -print0)
-if [ "$COUNT" -eq 0 ]; then
+# Site root = folder holding the shallowest .html file (zip may wrap files in a folder)
+FIRST="$(find /tmp/barbaras-update -name '*.html' | awk -F/ '{print NF"\t"$0}' | sort -n | head -1 | cut -f2-)"
+if [ -z "$FIRST" ]; then
   echo "No site files found in the download."
   read -n 1 -s -r -p "Press any key to close..."; exit 1
 fi
+SRC="$(dirname "$FIRST")"
 
-# Commit
+COUNT=0
+while IFS= read -r -d '' f; do
+  rel="${f#$SRC/}"
+  mkdir -p "$REPO/$(dirname "$rel")"; cp "$f" "$REPO/$rel"
+  echo "  updated: $rel"
+  COUNT=$((COUNT+1))
+done < <(find "$SRC" -type f \( -name '*.html' -o -name '*.js' -o -name '*.pdf' -o -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.webp' -o -name '*.ico' -o -name '*.json' -o -name '*.xml' -o -name '*.txt' -o -name '*.ics' -o -name '*.command' \) -print0)
+chmod +x "$REPO/update-site.command" 2>/dev/null || true
+
 "$GIT" add -A
 if "$GIT" diff --cached --quiet; then
   echo "Files are identical to what's already live — nothing to update."
@@ -50,11 +51,12 @@ if "$GIT" diff --cached --quiet; then
 fi
 "$GIT" commit -m "Site update $(date '+%Y-%m-%d %H:%M')"
 
-# Pull any remote changes first (so the push isn't rejected), then push
 "$GIT" pull --rebase --autostash || true
 if "$GIT" push; then
   echo ""
-  echo "✅ Pushed. Vercel is redeploying — check barbarasdancestudio.com in ~1 minute."
+  echo "✅ Pushed $COUNT files. Vercel is redeploying — check barbarasdancestudio.com in ~1 minute."
+  mkdir -p "$HOME/Downloads/Installed site updates"
+  mv "$ZIP" "$HOME/Downloads/Installed site updates/" 2>/dev/null || true
 else
   echo ""
   echo "Commit made, but push needs GitHub Desktop. Opening it now —"
