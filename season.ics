@@ -1,0 +1,140 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Barbaras Academy of Dance//Season Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Barbara’s Academy of Dance 2026/27
+X-WR-TIMEZONE:America/Detroit
+REFRESH-INTERVAL;VALUE=DURATION:P1D
+X-PUBLISHED-TTL:P1D
+BEGIN:VEVENT
+UID:20260812-open-house@barbarasdancestudio.com
+DTSTAMP:20261027T173711Z
+DTSTART;VALUE=DATE:20260812
+DTEND;VALUE=DATE:20260813
+SUMMARY:Open House
+DESCRIPTION:Try a class · tour the studio · refreshments
+LOCATION:Barbara’s Academy of Dance\, 24405 Halsted Rd\, Farmington Hills\, MI 48335
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260907-studio-closed-labor-day@barbarasdancestudio.com
+DTSTAMP:20261027T173711Z
+DTSTART;VALUE=DATE:20260907
+DTEND;VALUE=DATE:20260908
+SUMMARY:Studio closed — Labor Day
+LOCATION:Barbara’s Academy of Dance\, 24405 Halsted Rd\, Farmington Hills\, MI 48335
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260914-classes-begin-@barbarasdancestudio.com
+DTSTAMP:20261027T174137Z
+DTSTART;VALUE=DATE:20260914
+DTEND;VALUE=DATE:20260915
+SUMMARY:Classes begin!
+DESCRIPTION:The 2026/27 season is underway.
+LOCATION:Barbara’s Academy of Dance\, 24405 Halsted Rd\, Farmington Hills\, MI 48335
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20261026-recital-costume-deposits-due@barbarasdancestudio.com
+DTSTAMP:20261027T173711Z
+DTSTART;VALUE=DATE:20261026
+DTEND;VALUE=DATE:20261027
+SUMMARY:Recital costume deposits due
+DESCRIPTION:$85 per class · Trio $180 · Combo $90
+LOCATION:Barbara’s Academy of Dance\, 24405 Halsted Rd\, Farmington Hills\, MI 48335
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20261031-studio-closed-halloween@barbarasdancestudio.com
+DTSTAMP:20261027T173711Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Studio closed — Halloween
+LOCATION:Barbara’s Academy of Dance\, 24405 Halsted Rd\, Farmington Hills\, MI 48335
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20261124-studio-closed-thanksgiving-break@barbarasdancestudio.com
+DTSTAMP:20261027T173711Z
+DTSTART;VALUE=DATE:20261124
+DTEND;VALUE=DATE:20261130
+SUMMARY:Studio closed — Thanksgiving break
+LOCATION:Barbara’s Academy of Dance\, 24405 Halsted Rd\, Farmington Hills\, MI 48335
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20261221-studio-closed-holiday-break@barbarasdancestudio.com
+DTSTAMP:20261027T173711Z
+DTSTART;VALUE=DATE:20261221
+DTEND;VALUE=DATE:20270104
+SUMMARY:Studio closed — Holiday break
+LOCATION:Barbara’s Academy of Dance\, 24405 Halsted Rd\, Farmington Hills\, MI 48335
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20270104-classes-resume@barbarasdancestudio.com
+DTSTAMP:20261027T173711Z
+DTSTART;VALUE=DATE:20270104
+DTEND;VALUE=DATE:20270105
+SUMMARY:Classes resume
+LOCATION:Barbara’s Academy of Dance\, 24405 Halsted Rd\, Farmington Hills\, MI 48335
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20270118-studio-closed-mlk-observance@barbarasdancestudio.com
+DTSTAMP:20261027T173711Z
+DTSTART;VALUE=DATE:20270118
+DTEND;VALUE=DATE:20270119
+SUMMARY:Studio closed — MLK observance
+LOCATION:Barbara’s Academy of Dance\, 24405 Halsted Rd\, Farmington Hills\, MI 48335
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20270213-studio-closed-mid-winter-break@barbarasdancestudio.com
+DTSTAMP:20261027T173711Z
+DTSTART;VALUE=DATE:20270213
+DTEND;VALUE=DATE:20270220
+SUMMARY:Studio closed — Mid-winter break
+LOCATION:Barbara’s Academy of Dance\, 24405 Halsted Rd\, Farmington Hills\, MI 48335
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20270326-studio-closed-spring-break@barbarasdancestudio.com
+DTSTAMP:20261027T173711Z
+DTSTART;VALUE=DATE:20270326
+DTEND;VALUE=DATE:20270405
+SUMMARY:Studio closed — Spring break
+LOCATION:Barbara’s Academy of Dance\, 24405 Halsted Rd\, Farmington Hills\, MI 48335
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20270501-recital-tickets-on-sale@barbarasdancestudio.com
+DTSTAMP:20261027T173711Z
+DTSTART;VALUE=DATE:20270501
+DTEND;VALUE=DATE:20270502
+SUMMARY:Recital tickets on sale
+LOCATION:Barbara’s Academy of Dance\, 24405 Halsted Rd\, Farmington Hills\, MI 48335
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20270528-studio-closed-memorial-weekend@barbarasdancestudio.com
+DTSTAMP:20261027T173711Z
+DTSTART;VALUE=DATE:20270528
+DTEND;VALUE=DATE:20270601
+SUMMARY:Studio closed — Memorial weekend
+LOCATION:Barbara’s Academy of Dance\, 24405 Halsted Rd\, Farmington Hills\, MI 48335
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20270615-year-end-recital@barbarasdancestudio.com
+DTSTAMP:20261027T173711Z
+DTSTART;VALUE=DATE:20270615
+DTEND;VALUE=DATE:20270616
+SUMMARY:Year-end recital
+DESCRIPTION:Date to be finalized · The night every dancer works toward
+LOCATION:Barbara’s Academy of Dance\, 24405 Halsted Rd\, Farmington Hills\, MI 48335
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

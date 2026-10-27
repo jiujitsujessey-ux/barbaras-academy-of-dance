@@ -12,13 +12,15 @@ export function initSite(opts = {}) {
   if (prevTeardown) { try { prevTeardown(); } catch (e) {} prevTeardown = null; }
 
   /* visitor counting (GoatCounter) — live site only */
-  if (!window.goatcounter && /(^|\.)bh-?dance/.test(location.hostname) && !/\.dc\.html$/.test(location.pathname)) {
+  if (!window.goatcounter && /(^|\.)(bh-?dance|barbarasdancestudio)/.test(location.hostname) && !/\.dc\.html$/.test(location.pathname)) {
     window.goatcounter = {};
-    const gc = document.createElement('script');
-    gc.async = true;
-    gc.dataset.goatcounter = 'https://bhdance.goatcounter.com/count';
-    gc.src = 'https://gc.zgo.at/count.js';
-    document.head.appendChild(gc);
+    if (!document.querySelector('script[data-goatcounter]')) {
+      const gc = document.createElement('script');
+      gc.async = true;
+      gc.dataset.goatcounter = 'https://bhdance.goatcounter.com/count';
+      gc.src = 'https://gc.zgo.at/count.js';
+      document.head.appendChild(gc);
+    }
     const va = document.createElement('script');
     va.defer = true;
     va.src = '/_vercel/insights/script.js';
@@ -647,6 +649,64 @@ export function initSite(opts = {}) {
       ctx.globalAlpha = 1;
     });
   }
+
+  /* ================= mobile quick-action bar ================= */
+  if (opts.actionBar !== false && !qs('.m-action')) {
+    const st = ce('style');
+    st.textContent = '.m-action{display:none}@media (max-width:720px){.m-action{position:fixed;left:0;right:0;bottom:0;z-index:150;display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:8px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(251,250,247,.96);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid rgba(29,38,71,.13)}.m-action a{display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:999px;border:1px solid #1D2647;color:#1D2647;text-decoration:none;font:500 .78rem/1 Jost,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase}.m-action a.m-main{background:#1D2647;color:#FBFAF7}body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}}@media print{.m-action{display:none!important}}';
+    const bar = ce('nav', 'm-action');
+    bar.setAttribute('aria-label', 'Quick actions');
+    bar.innerHTML = '<a href="tel:+12484767074">Call</a>'
+      + '<a href="https://www.google.com/maps/search/?api=1&query=24405+Halsted+Rd+Farmington+Hills+MI+48335" target="_blank" rel="noopener">Directions</a>'
+      + '<a class="m-main" href="https://app.jackrabbitclass.com/regv2.asp?id=558705" target="_blank" rel="noopener">Register</a>';
+    doc.head.appendChild(st); doc.body.appendChild(bar); created.push(st, bar);
+  }
+
+  /* ================= closure banner =================
+     Reads "closed" entries from calendar-events.js; shows a strip from
+     3 days before a closure through its last day. */
+  (async () => {
+    try {
+      const src = (window.__resources && window.__resources.calEvents) || new URL('calendar-events.js', location.href).href;
+      const m = await import(src);
+      if (dead) return;
+      const y0 = parseInt(String(m.SEASON || '').slice(0, 4), 10) || new Date().getFullYear();
+      const MON = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
+      const mk = (mo, d) => new Date(mo >= 7 ? y0 : y0 + 1, mo, d);
+      const range = w => {
+        const x = /([A-Za-z]{3})[a-z]*\.?\s+(\d{1,2})(?:\s*[\u2013-]\s*(?:([A-Za-z]{3})[a-z]*\.?\s+)?(\d{1,2}))?/.exec(w || '');
+        if (!x || MON[x[1].toLowerCase()] == null) return null;
+        const m1 = MON[x[1].toLowerCase()], m2 = x[3] ? MON[x[3].toLowerCase()] : m1;
+        const a = mk(m1, +x[2]);
+        return [a, x[4] ? mk(m2 == null ? m1 : m2, +x[4]) : a];
+      };
+      const now = new Date(); const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const fmt = d => d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+      let hit = null;
+      (m.EVENTS || []).forEach(ev => {
+        if (hit || ev.type !== 'closed') return;
+        const r = range(ev.when); if (!r) return;
+        const lead = new Date(r[0]); lead.setDate(lead.getDate() - 3);
+        if (today >= lead && today <= r[1]) hit = { ev, r };
+      });
+      if (!hit || qs('.closure-bar')) return;
+      const label = String(hit.ev.title).replace(/^Studio closed\s*[\u2014\u2013-]\s*/i, '');
+      const [a, b] = hit.r; const same = a.getTime() === b.getTime();
+      let text;
+      if (today >= a) text = 'The studio is closed today' + (today < b ? ' through ' + fmt(b) : '') + ' for ' + label + '.';
+      else text = 'Studio closed ' + fmt(a) + (same ? '' : ' \u2013 ' + fmt(b)) + ' for ' + label + '.';
+      const bar = ce('div', 'closure-bar');
+      bar.setAttribute('role', 'status');
+      bar.style.cssText = 'background:#F5E7E3;color:#1D2647;text-align:center;padding:.55rem 24px;font-size:.78rem;letter-spacing:.06em;line-height:1.5';
+      bar.textContent = text + ' ';
+      const ln = ce('a'); ln.href = '/classes#calendar'; ln.textContent = 'See the calendar';
+      ln.style.cssText = 'color:#1D2647;font-weight:500;margin-left:.35rem;white-space:nowrap';
+      bar.appendChild(ln);
+      const anchor = qs('.announce') || qs('.nav');
+      if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(bar, anchor); else doc.body.insertBefore(bar, doc.body.firstChild);
+      created.push(bar);
+    } catch (e) { /* no calendar data — no banner */ }
+  })();
 
   /* ================= teardown ================= */
   const teardown = () => {
