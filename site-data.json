@@ -220,6 +220,10 @@
         {
           "when": "Thu · 1:30–2:15",
           "what": "Combo · Ballet/Tap · ages 3–5½"
+        },
+        {
+          "when": "Thu · 5:00–6:00",
+          "what": "Ballet/Tap · Continuing · ages 7–11"
         }
       ]
     },
@@ -237,10 +241,6 @@
         {
           "when": "Wed · 8:15–9:00 pm",
           "what": "Adult ballet"
-        },
-        {
-          "when": "Thu · 4:45–5:30",
-          "what": "Continuing · ages 7–11"
         }
       ]
     },
@@ -271,10 +271,6 @@
         {
           "when": "Wed · 9:00–9:30 pm",
           "what": "Adult tap"
-        },
-        {
-          "when": "Thu · 5:30–6:00",
-          "what": "Continuing · ages 7–11"
         }
       ]
     },
@@ -379,7 +375,7 @@
       ]
     }
   ],
-  "schedVersion": 3,
+  "schedVersion": 4,
   "classTags": [
     [
       "Combo · 3–5½",
