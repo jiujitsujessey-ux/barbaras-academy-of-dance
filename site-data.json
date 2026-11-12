@@ -2,9 +2,9 @@
   "_readme": "Studio-editable site data. Edit via the admin page (admin.html) — changes auto-publish in about a minute.",
   "announcement": {
     "show": true,
-    "text": "2026/27 Schedule now available — Fall registration is open — classes begin in September",
-    "linkText": "Reserve your dancer's spot →",
-    "linkHref": "register.html"
+    "text": "Join us for the Light Up the Grand Parade on December 5th at 5:30 PM as we come together to light up the night and support our wonderful community!",
+    "linkText": "",
+    "linkHref": ""
   },
   "season": "2026/27",
   "events": [
