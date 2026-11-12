@@ -24,6 +24,19 @@
   ],
   "headers": [
     {
+      "source": "/_s/(.*)\\.woff2\\.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "font/woff2"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
       "source": "/_s/(.*)",
       "headers": [
         {
