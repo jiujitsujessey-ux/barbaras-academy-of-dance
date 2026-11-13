@@ -1,5 +1,5 @@
 {
-  "_readme": "Studio-editable site data. Edit via the admin page (admin.html) — changes auto-publish in about a minute.",
+  "_readme": "Studio-editable site data. Edit via the admin page (admin.html). Changes auto-publish in about a minute.",
   "announcement": {
     "show": true,
     "text": "Join us for the Light Up the Grand Parade on December 5th at 5:30 PM as we come together to light up the night and support our wonderful community!",
@@ -17,17 +17,17 @@
     },
     {
       "month": "September",
+      "when": "Mon · Sept 7",
+      "title": "Studio closed: Labor Day",
+      "type": "closed",
+      "note": ""
+    },
+    {
+      "month": "September",
       "when": "Mon · Sept 14",
       "title": "Classes begin!",
       "type": "milestone",
       "note": "The 2026/27 season is underway!"
-    },
-    {
-      "month": "September",
-      "when": "Mon · Sept 8",
-      "title": "Labor Day",
-      "type": "closed",
-      "note": ""
     },
     {
       "month": "October",
@@ -39,21 +39,21 @@
     {
       "month": "October",
       "when": "Fri · Oct 31",
-      "title": "Studio closed — Halloween",
+      "title": "Studio closed: Halloween",
       "type": "closed",
       "note": ""
     },
     {
       "month": "November",
       "when": "Nov 24–29",
-      "title": "Studio closed — Thanksgiving break",
+      "title": "Studio closed: Thanksgiving break",
       "type": "closed",
       "note": ""
     },
     {
       "month": "December",
       "when": "Dec 21 – Jan 3",
-      "title": "Studio closed — Holiday break",
+      "title": "Studio closed: Holiday break",
       "type": "closed",
       "note": ""
     },
@@ -67,21 +67,21 @@
     {
       "month": "January",
       "when": "Mon · Jan 18",
-      "title": "Studio closed — MLK observance",
+      "title": "Studio closed: MLK observance",
       "type": "closed",
       "note": ""
     },
     {
       "month": "February",
       "when": "Feb 13–19",
-      "title": "Studio closed — Mid-winter break",
+      "title": "Studio closed: Mid-winter break",
       "type": "closed",
       "note": ""
     },
     {
       "month": "March / April",
       "when": "Mar 26 – Apr 4",
-      "title": "Studio closed — Spring break",
+      "title": "Studio closed: Spring break",
       "type": "closed",
       "note": ""
     },
@@ -102,7 +102,7 @@
     {
       "month": "May",
       "when": "May 28–31",
-      "title": "Studio closed — Memorial weekend",
+      "title": "Studio closed: Memorial weekend",
       "type": "closed",
       "note": ""
     },
@@ -183,7 +183,7 @@
       "who": "Barbara’s Academy parent · company family"
     },
     {
-      "quote": "Watching her on stage at the recital — confident, smiling, prepared — was worth every single Tuesday drive.",
+      "quote": "Watching her on stage at the recital (confident, smiling, prepared) was worth every single Tuesday drive.",
       "who": "Barbara’s Academy parent · recreational classes"
     }
   ],
@@ -239,7 +239,7 @@
           "what": "Continuing · ages 9–12"
         },
         {
-          "when": "Wed · 8:15–9:00 pm",
+          "when": "Wed · 8:15–9:00",
           "what": "Adult ballet"
         }
       ]
@@ -269,7 +269,7 @@
           "what": "Continuing · ages 9–12"
         },
         {
-          "when": "Wed · 9:00–9:30 pm",
+          "when": "Wed · 9:00–9:30",
           "what": "Adult tap"
         }
       ]
@@ -321,7 +321,7 @@
       "rows": [
         {
           "when": "Mon · 5:00–5:30",
-          "what": "Hip Hop Kidz · ages 6–10"
+          "what": "Hip-Hop Kidz · ages 6–10"
         },
         {
           "when": "Tue · 7:00–7:30",
@@ -332,12 +332,12 @@
           "what": "Ages 13–18"
         },
         {
-          "when": "Wed · 9:30–10:00 pm",
+          "when": "Wed · 9:30–10:00",
           "what": "Adult hip-hop"
         },
         {
           "when": "Tue · 6:15–6:45",
-          "what": "Boys Hip Hop · ages 6–11"
+          "what": "Boys Hip-Hop · ages 6–11"
         },
         {
           "when": "Thu · 7:00–7:30",
@@ -358,7 +358,7 @@
         },
         {
           "when": "Thu · 2:15–2:45",
-          "what": "Beginning · ages 3½–6"
+          "what": "Beginner · ages 3½–6"
         },
         {
           "when": "Thu · 7:30–8:00",
@@ -380,11 +380,10 @@
     [
       "Combo · 3–5½",
       "Trio · 5½–9",
-      "Enhanced Trio · 7–10"
+      "Ballet/Tap · 7–11"
     ],
     [
-      "Ages 7–10",
-      "10–13",
+      "Ages 9–12",
       "13–18",
       "Adult"
     ],
@@ -393,20 +392,19 @@
       "Intermediate · 13–18"
     ],
     [
-      "Ages 7–10",
-      "10–13",
+      "Ages 9–12",
       "13–18",
       "Adult"
     ],
     [
-      "Ages 7–10",
-      "10–13",
+      "Ages 7–11",
+      "9–12",
       "13–18"
     ],
     [
-      "Beginning · 6–10",
-      "7–10",
-      "10–13",
+      "Beginner · 6–10",
+      "7–11",
+      "9–12",
       "13–18"
     ],
     [
@@ -416,12 +414,14 @@
     [
       "Kidz · 6–10",
       "Boys · 6–11",
-      "10–13",
+      "7–11",
+      "9–12",
       "13–18",
       "Adult"
     ],
     [
-      "Beginning · 3½–6",
+      "Beginner · 3½–6",
+      "5½–9",
       "6–10",
       "7–11"
     ]
@@ -669,21 +669,21 @@
     }
   ],
   "pageText": {
-    "home.heroSub": "Ballet, tap, jazz, hip-hop and more for ages 3–18 — taught with the warmth of a small studio and the standards of a serious one, for 40 years and counting.",
+    "home.heroSub": "Ballet, tap, jazz, hip-hop and more for ages 3 to adult, taught with the warmth of a small studio and the standards of a serious one, for 40 years and counting.",
     "home.about": "",
-    "classes.intro": "From a first preschool combo class to pointe work and championship hip-hop — every class builds on a strong ballet foundation, taught by the faculty families know by name.",
-    "classes.desc0": "Two or three styles in one class, sized for little attention spans. Combo pairs ballet with tap or jazz; Trio adds a third style as dancers grow — the gentlest possible start.",
-    "classes.desc1": "Barre, center, and classical technique — the discipline underneath every other style we teach, and the reason our dancers move the way they do.",
-    "classes.desc2": "The milestone every ballet dancer works toward. By teacher invitation once ankles and technique are ready — strength first, satin second.",
-    "classes.desc3": "Rhythm, musicality, and fast feet — from first shuffles to intricate combinations. The class you hear from the lobby.",
-    "classes.desc4": "Energy, precision, and performance style — leaps, turns, and the showmanship that carries straight onto the competition stage.",
-    "classes.desc5": "Where ballet technique meets storytelling — expressive, flowing movement set to the music your dancer already loves.",
+    "classes.intro": "From a first preschool combo class to pointe work and championship hip-hop, every class builds on a strong ballet foundation, taught by teachers families know by name.",
+    "classes.desc0": "Two or three styles in one class, sized for little attention spans. Combo pairs ballet with tap or jazz; Trio adds a third style as dancers grow. It's the gentlest possible start.",
+    "classes.desc1": "Barre, center, and classical technique: the discipline underneath every other style we teach, and the reason our dancers move the way they do.",
+    "classes.desc2": "The milestone every ballet dancer works toward. By teacher invitation once ankles and technique are ready. Strength first, satin second.",
+    "classes.desc3": "Rhythm, musicality, and fast feet, from first shuffles to intricate combinations. The class you hear from the lobby.",
+    "classes.desc4": "Energy, precision, and performance style: leaps, turns, and the showmanship that carries straight onto the competition stage.",
+    "classes.desc5": "Where ballet technique meets storytelling: expressive, flowing movement set to the music your dancer already loves.",
     "classes.desc6": "Modern movement, floor work, and improvisation layered over classical training. Taught within our Saturday Trio and throughout company choreography.",
-    "classes.desc7": "Grooves, isolations, and full-out choreography — the style with a class for nearly every age, including one just for the boys.",
-    "classes.desc8": "Tumbling, flexibility, and controlled strength — cartwheels to walkovers and beyond, taught safely and step by step.",
-    "summer.sub": "Keep dancing all summer long — from princess camps for the littlest dancers to technique intensives for company kids. Tap any flyer for the full details, then register through the portal.",
-    "nutcracker.lede": "Every other holiday season, Barbara’s Academy of Dance brings Clara, the Land of Sweets, and a stage full of snow to Farmington Hills — with a cast that spans the entire studio family, from our tiniest angels to the Performing Company.",
-    "register.intro": "All students register each season — it takes a few minutes in the Parent Portal, and the office confirms your dancer’s spot.",
+    "classes.desc7": "Grooves, isolations, and full-out choreography. It's the style with a class for nearly every age, including one just for the boys.",
+    "classes.desc8": "Tumbling, flexibility, and controlled strength, from cartwheels to walkovers and beyond, taught safely and step by step.",
+    "summer.sub": "Keep dancing all summer long, from princess camps for the littlest dancers to technique intensives for company kids. Tap any flyer for the full details, then register through the portal.",
+    "nutcracker.lede": "Every other holiday season, Barbara’s Academy of Dance brings Clara, the Land of Sweets, and a stage full of snow to Farmington Hills, with a cast that spans the entire studio family, from our tiniest angels to the Performing Company.",
+    "register.intro": "All students register each season. It takes a few minutes in the Parent Portal, and the office confirms your dancer’s spot.",
     "contact.phone": "(248) 476-7074",
     "contact.email": "barbarasdance2@gmail.com"
   }

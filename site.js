@@ -690,7 +690,7 @@ export function initSite(opts = {}) {
         if (today >= lead && today <= r[1]) hit = { ev, r };
       });
       if (!hit || qs('.closure-bar')) return;
-      const label = String(hit.ev.title).replace(/^Studio closed\s*[\u2014\u2013-]\s*/i, '');
+      const label = String(hit.ev.title).replace(/^Studio closed\s*[\u2014\u2013:-]\s*/i, '');
       const [a, b] = hit.r; const same = a.getTime() === b.getTime();
       let text;
       if (today >= a) text = 'The studio is closed today' + (today < b ? ' through ' + fmt(b) : '') + ' for ' + label + '.';
