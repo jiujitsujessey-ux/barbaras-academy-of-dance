@@ -4,7 +4,8 @@
     "show": true,
     "text": "Join us for the Light Up the Grand Parade on December 5th at 5:30 PM as we come together to light up the night and support our wonderful community!",
     "linkText": "",
-    "linkHref": ""
+    "linkHref": "",
+    "until": "2026-12-05"
   },
   "season": "2026/27",
   "events": [
@@ -428,242 +429,242 @@
   ],
   "gallery": [
     {
-      "src": "gal-umbrella.jpg",
+      "src": "assets/gal-umbrella.jpg",
       "caption": "Performing Company",
       "wide": true
     },
     {
-      "src": "gal-whiteblue.jpg",
+      "src": "assets/gal-whiteblue.jpg",
       "caption": "Lyrical",
       "wide": false
     },
     {
-      "src": "gal-herogrp.jpg",
+      "src": "assets/gal-herogrp.jpg",
       "caption": "Lyrical",
       "wide": true
     },
     {
-      "src": "gal-blushleap.jpg",
+      "src": "assets/gal-blushleap.jpg",
       "caption": "Lyrical",
       "wide": false
     },
     {
-      "src": "gal-blueduet.jpg",
+      "src": "assets/gal-blueduet.jpg",
       "caption": "Tiny Dancers",
       "wide": false
     },
     {
-      "src": "gal-pinkfive.jpg",
+      "src": "assets/gal-pinkfive.jpg",
       "caption": "Contemporary",
       "wide": true
     },
     {
-      "src": "gal-candy.jpg",
+      "src": "assets/gal-candy.jpg",
       "caption": "Tiny Dancers",
       "wide": false
     },
     {
-      "src": "gal-rainbow.jpg",
+      "src": "assets/gal-rainbow.jpg",
       "caption": "Hip-Hop",
       "wide": false
     },
     {
-      "src": "gal-tinypink.jpg",
+      "src": "assets/gal-tinypink.jpg",
       "caption": "Lyrical",
       "wide": false
     },
     {
-      "src": "gal-teamfull.jpg",
+      "src": "assets/gal-teamfull.jpg",
       "caption": "Competition Team",
       "wide": true
     },
     {
-      "src": "gal-whitetilt.jpg",
+      "src": "assets/gal-whitetilt.jpg",
       "caption": "Contemporary",
       "wide": false
     },
     {
-      "src": "gal-navydress.jpg",
+      "src": "assets/gal-navydress.jpg",
       "caption": "Lyrical",
       "wide": false
     },
     {
-      "src": "gal-navybend.jpg",
+      "src": "assets/gal-navybend.jpg",
       "caption": "Lyrical",
       "wide": false
     },
     {
-      "src": "gal-lavender.jpg",
+      "src": "assets/gal-lavender.jpg",
       "caption": "Lyrical",
       "wide": true
     },
     {
-      "src": "gal-pinkpink.jpg",
+      "src": "assets/gal-pinkpink.jpg",
       "caption": "Contemporary",
       "wide": false
     },
     {
-      "src": "gal-hiphop.jpg",
+      "src": "assets/gal-hiphop.jpg",
       "caption": "Hip-Hop",
       "wide": false
     },
     {
-      "src": "gal-jazzkick.jpg",
+      "src": "assets/gal-jazzkick.jpg",
       "caption": "Jazz",
       "wide": false
     },
     {
-      "src": "gal-royalblue.jpg",
+      "src": "assets/gal-royalblue.jpg",
       "caption": "Junior Company",
       "wide": true
     },
     {
-      "src": "gal-pinkjazz.jpg",
+      "src": "assets/gal-pinkjazz.jpg",
       "caption": "Jazz",
       "wide": true
     },
     {
-      "src": "gal-tutu.jpg",
+      "src": "assets/gal-tutu.jpg",
       "caption": "First Recital",
       "wide": false
     },
     {
-      "src": "gal-oversplit.jpg",
+      "src": "assets/gal-oversplit.jpg",
       "caption": "Technique",
       "wide": false
     },
     {
-      "src": "gal-greyleap.jpg",
+      "src": "assets/gal-greyleap.jpg",
       "caption": "Lyrical",
       "wide": false
     },
     {
-      "src": "gal-yellowsolo.jpg",
+      "src": "assets/gal-yellowsolo.jpg",
       "caption": "Lyrical",
       "wide": false
     },
     {
-      "src": "gal-blueplank.jpg",
+      "src": "assets/gal-blueplank.jpg",
       "caption": "Contemporary",
       "wide": false
     },
     {
-      "src": "gal-redchairs.jpg",
+      "src": "assets/gal-redchairs.jpg",
       "caption": "Performing Company",
       "wide": true
     },
     {
-      "src": "gal-tiltkick2.jpg",
+      "src": "assets/gal-tiltkick2.jpg",
       "caption": "Contemporary",
       "wide": false
     },
     {
-      "src": "gal-redsplit.jpg",
+      "src": "assets/gal-redsplit.jpg",
       "caption": "Contemporary",
       "wide": false
     },
     {
-      "src": "gal-duo.jpg",
+      "src": "assets/gal-duo.jpg",
       "caption": "Duet",
       "wide": false
     },
     {
-      "src": "gal-trio.jpg",
+      "src": "assets/gal-trio.jpg",
       "caption": "Trio",
       "wide": false
     },
     {
-      "src": "gal-triosit.jpg",
+      "src": "assets/gal-triosit.jpg",
       "caption": "Seniors",
       "wide": false
     },
     {
-      "src": "gal-creamtrio.jpg",
+      "src": "assets/gal-creamtrio.jpg",
       "caption": "Duet",
       "wide": false
     },
     {
-      "src": "gal-teammini.jpg",
+      "src": "assets/gal-teammini.jpg",
       "caption": "Mini Team",
       "wide": true
     },
     {
-      "src": "gal-whitekick.jpg",
+      "src": "assets/gal-whitekick.jpg",
       "caption": "Contemporary",
       "wide": false
     },
     {
-      "src": "gal-blackpointe.jpg",
+      "src": "assets/gal-blackpointe.jpg",
       "caption": "Ballet",
       "wide": false
     },
     {
-      "src": "gal-yellowgrp.jpg",
+      "src": "assets/gal-yellowgrp.jpg",
       "caption": "Lyrical",
       "wide": true
     },
     {
-      "src": "gal-whiteatt.jpg",
+      "src": "assets/gal-whiteatt.jpg",
       "caption": "Contemporary",
       "wide": false
     },
     {
-      "src": "gal-tapfeather.jpg",
+      "src": "assets/gal-tapfeather.jpg",
       "caption": "Tap",
       "wide": false
     },
     {
-      "src": "gal-tealtap.jpg",
+      "src": "assets/gal-tealtap.jpg",
       "caption": "Tap",
       "wide": true
     },
     {
-      "src": "gal-younggrp.jpg",
+      "src": "assets/gal-younggrp.jpg",
       "caption": "Young Dancers",
       "wide": true
     },
     {
-      "src": "gal-navyunitard.jpg",
+      "src": "assets/gal-navyunitard.jpg",
       "caption": "Contemporary",
       "wide": false
     },
     {
-      "src": "gal-stsplit.jpg",
+      "src": "assets/gal-stsplit.jpg",
       "caption": "Contemporary",
       "wide": false
     },
     {
-      "src": "gal-bridge.jpg",
+      "src": "assets/gal-bridge.jpg",
       "caption": "Acro",
       "wide": false
     },
     {
-      "src": "gal-teamjr.jpg",
+      "src": "assets/gal-teamjr.jpg",
       "caption": "Junior Team",
       "wide": true
     },
     {
-      "src": "gal-recital5.jpg",
+      "src": "assets/gal-recital5.jpg",
       "caption": "Recital Day",
       "wide": true
     },
     {
-      "src": "gal-pinklyr.jpg",
+      "src": "assets/gal-pinklyr.jpg",
       "caption": "Lyrical",
       "wide": true
     },
     {
-      "src": "gal-handstand.jpg",
+      "src": "assets/gal-handstand.jpg",
       "caption": "Acro",
       "wide": false
     },
     {
-      "src": "gal-srchairs.jpg",
+      "src": "assets/gal-srchairs.jpg",
       "caption": "Senior Company",
       "wide": true
     },
     {
-      "src": "gal-teamsr.jpg",
+      "src": "assets/gal-teamsr.jpg",
       "caption": "Senior Team",
       "wide": true
     }

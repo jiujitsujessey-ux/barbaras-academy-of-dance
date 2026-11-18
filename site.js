@@ -87,6 +87,7 @@ export function initSite(opts = {}) {
     }
     const ann = d && d.announcement;
     const annEl = qs('.announce[data-announce="admin"]');
+    if (ann && ann.until && /^\d{4}-\d{2}-\d{2}$/.test(ann.until)) { const u = ann.until.split('-'); const end = new Date(+u[0], +u[1] - 1, +u[2], 23, 59, 59); if (new Date() > end) { const any = qs('.announce'); if (any) any.style.display = 'none'; return; } }
     if (ann && annEl) {
       if (ann.show === false) { annEl.style.display = 'none'; }
       else if (ann.text) {
@@ -710,65 +711,93 @@ export function initSite(opts = {}) {
     } catch (e) { /* no calendar data — no banner */ }
   })();
 
-  /* ================= seasonal theme =================
-     Thanksgiving 2026: on Nov 18-30 only, then the site returns to normal by itself.
-     Preview any day with ?theme=thanks on the URL. */
+  /* ================= seasonal themes =================
+     Each season turns itself on and off by date. Preview any day with ?theme=<id>.
+     Thanksgiving: Nov 18-30, 2026. Winter: Dec 1, 2026 - Jan 3, 2027. */
   (() => {
-    const SEASON = { id: 'thanks', from: [2026, 10, 18], to: [2026, 10, 30] };
+    const SEASONS = [
+      { id: 'thanks', from: [2026, 10, 18], to: [2026, 10, 30], accent: '#A4572A', soft: '#F6E7D6', line: '#EBD3B8', ghost: 'merci',
+        script: 'with gratitude', particles: 'leaves',
+        note: 'Thank you for sharing your dancers with us. We are grateful for every family in our studio, and we wish you a warm and happy Thanksgiving.' },
+      { id: 'winter', from: [2026, 11, 1], to: [2027, 0, 3], accent: '#2F5D62', soft: '#E8EEF3', line: '#CBD8E2', ghost: 'joie',
+        script: 'happy holidays', particles: 'snow',
+        note: 'Wishing your family a joyful holiday season. Thank you for a wonderful year of dancing with us, and we look forward to seeing you in the new year.' }
+    ];
     const n0 = new Date(); const day = new Date(n0.getFullYear(), n0.getMonth(), n0.getDate());
-    const active = /[?&]theme=thanks\b/.test(location.search) ||
-      (day >= new Date(SEASON.from[0], SEASON.from[1], SEASON.from[2]) && day <= new Date(SEASON.to[0], SEASON.to[1], SEASON.to[2]));
-    if (!active || root.classList.contains('th-thanks')) return;
-    root.classList.add('th-thanks');
-    /* warm autumn accents: the rose becomes pumpkin, the blush becomes warm cream */
-    const SWAP = { 'rgb(185, 140, 131)': '#A4572A', 'rgb(245, 231, 227)': '#F6E7D6', 'rgb(234, 213, 207)': '#EBD3B8' };
-    const swap = v => { let o = v; for (const k in SWAP) o = o.split(k).join(SWAP[k]); return o; };
+    const q = /[?&]theme=([a-z]+)/.exec(location.search);
+    const S = SEASONS.find(x => q ? x.id === q[1] : (day >= new Date(x.from[0], x.from[1], x.from[2]) && day <= new Date(x.to[0], x.to[1], x.to[2])));
+    if (!S || root.classList.contains('th-' + S.id)) return;
+    root.classList.add('th-' + S.id);
+    /* accent colors: the rose, blush and blush line take the season's colors */
+    const MAP = { 'rgb(185, 140, 131)': S.accent, 'rgb(245, 231, 227)': S.soft, 'rgb(234, 213, 207)': S.line };
+    const RX = /rgb\((185, 140, 131|245, 231, 227|234, 213, 207)\)/;
+    const swap = v => { let o = v; for (const k in MAP) o = o.split(k).join(MAP[k]); return o; };
     const PROPS = ['color', 'background-color', 'background-image', 'border-color', 'border-top-color', 'border-bottom-color', 'border-left-color', 'border-right-color', 'fill', 'stroke', 'text-decoration-color', 'outline-color'];
-    const fixStyle = st => { PROPS.forEach(p => { const v = st.getPropertyValue(p); if (v && /rgb\((185, 140, 131|245, 231, 227|234, 213, 207)\)/.test(v)) st.setProperty(p, swap(v), st.getPropertyPriority(p)); });
-      ['--rose', '--blush'].forEach(p => { const v = st.getPropertyValue(p).trim().toUpperCase(); if (v === '#B98C83') st.setProperty(p, '#A4572A'); if (v === '#F5E7E3') st.setProperty(p, '#F6E7D6'); }); };
+    const fixStyle = st => { PROPS.forEach(p => { const v = st.getPropertyValue(p); if (v && RX.test(v)) st.setProperty(p, swap(v), st.getPropertyPriority(p)); });
+      ['--rose', '--blush'].forEach(p => { const v = st.getPropertyValue(p).trim().toUpperCase(); if (v === '#B98C83') st.setProperty(p, S.accent); if (v === '#F5E7E3') st.setProperty(p, S.soft); }); };
     const walk = rules => { for (const r of rules) { try { if (r.style) fixStyle(r.style); if (r.cssRules) walk(r.cssRules); } catch (e) {} } };
-    const paint = () => {
-      for (const sh of doc.styleSheets) { try { walk(sh.cssRules); } catch (e) {} }
-      qsa('[style]').forEach(el => fixStyle(el.style));
-    };
+    const paint = () => { for (const sh of doc.styleSheets) { try { walk(sh.cssRules); } catch (e) {} } qsa('[style]').forEach(el => fixStyle(el.style)); };
     paint(); setTimeout(paint, 900);
-    /* French word in the Home hero: grâce becomes merci */
-    const ghost = qs('.ghost-word'); if (ghost && /gr[aâ]ce/i.test(ghost.textContent)) ghost.textContent = 'merci';
+    /* the faint French word behind the Home heading */
+    const ghost = qs('.ghost-word'); if (ghost && /gr[aâ]ce/i.test(ghost.textContent)) ghost.textContent = S.ghost;
     if (opts.page !== 'home') return;
     /* a note from Miss BeBe, just under the hero */
     const hero = qs('.hero');
-    if (hero && !qs('.thanks-note')) {
-      const note = ce('section', 'thanks-note');
-      note.setAttribute('aria-label', 'A Thanksgiving note from Miss BeBe');
-      note.style.cssText = 'background:#F6E7D6;color:#1D2647;text-align:center;padding:2.4rem 24px 2.6rem;position:relative;z-index:2';
-      note.innerHTML = '<p style="margin:0 0 .2rem;font-family:Sacramento,cursive;font-size:2rem;line-height:1.1;color:#A4572A">with gratitude</p>'
-        + '<p style="margin:0 auto;max-width:40rem;font-family:\'Bodoni Moda\',serif;font-size:clamp(1.15rem,2.4vw,1.45rem);line-height:1.5">Thank you for sharing your dancers with us. We are grateful for every family in our studio, and we wish you a warm and happy Thanksgiving.</p>'
+    if (hero && !qs('.season-note')) {
+      const note = ce('section', 'season-note');
+      note.setAttribute('aria-label', 'A note from Miss BeBe');
+      note.style.cssText = 'background:' + S.soft + ';color:#1D2647;text-align:center;padding:2.4rem 24px 2.6rem;position:relative;z-index:2';
+      note.innerHTML = '<p style="margin:0 0 .2rem;font-family:Sacramento,cursive;font-size:2rem;line-height:1.1;color:' + S.accent + '">' + S.script + '</p>'
+        + '<p style="margin:0 auto;max-width:40rem;font-family:\'Bodoni Moda\',serif;font-size:clamp(1.15rem,2.4vw,1.45rem);line-height:1.5">' + S.note + '</p>'
         + '<p style="margin:.9rem 0 0;font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#56618A">Miss BeBe &amp; the Barbara’s Academy faculty</p>';
       hero.parentNode.insertBefore(note, hero.nextSibling); created.push(note);
     }
-    /* a few slow falling leaves in the hero (off for reduced motion) */
+    /* slow falling leaves or snow in the hero (off for reduced motion) */
     if (calm || !hero) return;
-    const cv = ce('canvas', 'leaves'); cv.setAttribute('aria-hidden', 'true');
+    const cv = ce('canvas', 'season-fx'); cv.setAttribute('aria-hidden', 'true');
     cv.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1';
     if (getComputedStyle(hero).position === 'static') hero.style.position = 'relative';
     hero.appendChild(cv); created.push(cv);
     const ctx = cv.getContext('2d'); const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const COL = ['#A4572A', '#C08A2E', '#8E3B1F', '#B9733A'];
+    const snow = S.particles === 'snow';
+    const COL = snow ? ['#9FB4C7', '#B8C8D6', '#8AA3B8'] : ['#A4572A', '#C08A2E', '#8E3B1F', '#B9733A'];
     let W = 0, H = 0, ls = [];
-    const mk = init => ({ x: Math.random() * W, y: init ? Math.random() * H : -20, s: 7 + Math.random() * 7, v: 0.25 + Math.random() * 0.45,
-      a: 0.28 + Math.random() * 0.3, r: Math.random() * 6.28, vr: (Math.random() - 0.5) * 0.02, p: Math.random() * 6.28, c: COL[(Math.random() * COL.length) | 0] });
+    const mk = init => ({ x: Math.random() * W, y: init ? Math.random() * H : -20, s: snow ? 1.6 + Math.random() * 2.6 : 7 + Math.random() * 7,
+      v: snow ? 0.3 + Math.random() * 0.5 : 0.25 + Math.random() * 0.45, a: snow ? 0.35 + Math.random() * 0.35 : 0.28 + Math.random() * 0.3,
+      r: Math.random() * 6.28, vr: (Math.random() - 0.5) * 0.02, p: Math.random() * 6.28, c: COL[(Math.random() * COL.length) | 0] });
     const size = () => { const b = hero.getBoundingClientRect(); W = b.width; H = b.height; cv.width = Math.max(1, W * dpr); cv.height = Math.max(1, H * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); const n = W < 720 ? 9 : 16; ls = []; for (let i = 0; i < n; i++) ls.push(mk(true)); };
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); const n = snow ? (W < 720 ? 28 : 55) : (W < 720 ? 9 : 16); ls = []; for (let i = 0; i < n; i++) ls.push(mk(true)); };
     size(); on(window, 'resize', size);
     let vis = true; io(es => { vis = es[0].isIntersecting; }, {}).observe(cv);
-    const leaf = k => { ctx.save(); ctx.translate(k.x, k.y); ctx.rotate(k.r); ctx.globalAlpha = k.a; ctx.fillStyle = k.c;
-      ctx.beginPath(); ctx.moveTo(0, -k.s); ctx.quadraticCurveTo(k.s * 0.75, -k.s * 0.2, 0, k.s); ctx.quadraticCurveTo(-k.s * 0.75, -k.s * 0.2, 0, -k.s); ctx.fill();
+    const draw = k => { ctx.save(); ctx.translate(k.x, k.y); ctx.globalAlpha = k.a; ctx.fillStyle = k.c;
+      if (snow) { ctx.beginPath(); ctx.arc(0, 0, k.s, 0, 6.283); ctx.fill(); ctx.restore(); return; }
+      ctx.rotate(k.r); ctx.beginPath(); ctx.moveTo(0, -k.s); ctx.quadraticCurveTo(k.s * 0.75, -k.s * 0.2, 0, k.s); ctx.quadraticCurveTo(-k.s * 0.75, -k.s * 0.2, 0, -k.s); ctx.fill();
       ctx.globalAlpha = k.a * 0.8; ctx.strokeStyle = '#FBFAF7'; ctx.lineWidth = 0.7; ctx.beginPath(); ctx.moveTo(0, -k.s * 0.8); ctx.lineTo(0, k.s * 1.15); ctx.stroke(); ctx.restore(); };
     let t = 0;
     loop(() => { if (!vis || doc.hidden) return; t += 0.01; ctx.clearRect(0, 0, W, H);
-      for (let i = 0; i < ls.length; i++) { const k = ls[i]; k.y += k.v; k.x += Math.sin(t + k.p) * 0.45; k.r += k.vr + Math.sin(t * 1.3 + k.p) * 0.004;
-        if (k.y > H + 20) { ls[i] = mk(false); continue; } leaf(k); }
+      for (let i = 0; i < ls.length; i++) { const k = ls[i]; k.y += k.v; k.x += Math.sin(t + k.p) * (snow ? 0.3 : 0.45); k.r += k.vr + Math.sin(t * 1.3 + k.p) * 0.004;
+        if (k.y > H + 20) { ls[i] = mk(false); continue; } draw(k); }
       ctx.globalAlpha = 1; });
+  })();
+
+  /* ================= Home: next date in the season section =================
+     Keeps the middle date in "The season is underway" current from calendar-events.js. */
+  if (opts.page === 'home') (async () => {
+    try {
+      const box = qsa('.season .dates .date')[1]; if (!box) return;
+      const src = (window.__resources && window.__resources.calEvents) || new URL('calendar-events.js', location.href).href;
+      const m = await import(src); if (dead) return;
+      const y0 = parseInt(String(m.SEASON || '').slice(0, 4), 10) || new Date().getFullYear();
+      const MON = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
+      const n1 = new Date(); const today = new Date(n1.getFullYear(), n1.getMonth(), n1.getDate());
+      const ends = w => { const x = /([A-Za-z]{3})[a-z]*\.?\s+(\d{1,2})(?:\s*[–-]\s*(?:([A-Za-z]{3})[a-z]*\.?\s+)?(\d{1,2}))?/.exec(w || ''); if (!x || MON[x[1].toLowerCase()] == null) return null;
+        const m1 = MON[x[1].toLowerCase()], m2 = x[3] ? MON[x[3].toLowerCase()] : m1; const mk = (mo, d) => new Date(mo >= 7 ? y0 : y0 + 1, mo, d); return x[4] ? mk(m2, +x[4]) : mk(m1, +x[2]); };
+      const next = (m.EVENTS || []).find(ev => ev.type !== 'performance' && (() => { const e = ends(ev.when); return e && e >= today; })());
+      if (!next) return;
+      const b = box.querySelector('b'), sp = box.querySelector('span'); if (!b || !sp) return;
+      b.textContent = String(next.when).replace(/^[A-Za-z]{3}\s*·\s*/, '');
+      sp.textContent = next.type === 'closed' ? 'Closed \u00b7 ' + String(next.title).replace(/^Studio closed:\s*/i, '') : String(next.title).replace(/!$/, '');
+    } catch (e) {}
   })();
 
   /* ================= teardown ================= */
