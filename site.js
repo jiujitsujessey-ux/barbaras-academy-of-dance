@@ -711,10 +711,10 @@ export function initSite(opts = {}) {
   })();
 
   /* ================= seasonal theme =================
-     Thanksgiving 2026: on Nov 19-30 only, then the site returns to normal by itself.
+     Thanksgiving 2026: on Nov 18-30 only, then the site returns to normal by itself.
      Preview any day with ?theme=thanks on the URL. */
   (() => {
-    const SEASON = { id: 'thanks', from: [2026, 10, 19], to: [2026, 10, 30] };
+    const SEASON = { id: 'thanks', from: [2026, 10, 18], to: [2026, 10, 30] };
     const n0 = new Date(); const day = new Date(n0.getFullYear(), n0.getMonth(), n0.getDate());
     const active = /[?&]theme=thanks\b/.test(location.search) ||
       (day >= new Date(SEASON.from[0], SEASON.from[1], SEASON.from[2]) && day <= new Date(SEASON.to[0], SEASON.to[1], SEASON.to[2]));
