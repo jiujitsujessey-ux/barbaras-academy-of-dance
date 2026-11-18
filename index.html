@@ -1634,7 +1634,8 @@ class Component extends DCLogic {
       } else {
         // Still-time-to-register popup: show once every 7 days
         const last = +localStorage.getItem('bh-promo-fall26') || 0;
-        if (Date.now() - last > 7 * 86400000) setTimeout(() => this.setState({ showPromo: true }), 1600);
+        // Registration pop-up turned off Nov 18, 2026: (Date.now() - last > 7 * 86400000) setTimeout(() => this.setState({ showPromo: true }), 1600);
+        void last;
       }
     } catch (e) {}
     try {

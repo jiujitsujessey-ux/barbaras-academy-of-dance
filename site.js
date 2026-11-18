@@ -681,7 +681,7 @@ export function initSite(opts = {}) {
         return [a, x[4] ? mk(m2 == null ? m1 : m2, +x[4]) : a];
       };
       const now = new Date(); const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-      const fmt = d => d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+      const fmt = d => d.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
       let hit = null;
       (m.EVENTS || []).forEach(ev => {
         if (hit || ev.type !== 'closed') return;
@@ -695,6 +695,8 @@ export function initSite(opts = {}) {
       let text;
       if (today >= a) text = 'The studio is closed today' + (today < b ? ' through ' + fmt(b) : '') + ' for ' + label + '.';
       else text = 'Studio closed ' + fmt(a) + (same ? '' : ' \u2013 ' + fmt(b)) + ' for ' + label + '.';
+      { const back = new Date(b); back.setDate(back.getDate() + 1); while (back.getDay() === 0 || back.getDay() === 5) back.setDate(back.getDate() + 1);
+        text += ' Classes resume ' + fmt(back) + '.'; }
       const bar = ce('div', 'closure-bar');
       bar.setAttribute('role', 'status');
       bar.style.cssText = 'background:#F5E7E3;color:#1D2647;text-align:center;padding:.55rem 24px;font-size:.78rem;letter-spacing:.06em;line-height:1.5';
@@ -706,6 +708,67 @@ export function initSite(opts = {}) {
       if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(bar, anchor); else doc.body.insertBefore(bar, doc.body.firstChild);
       created.push(bar);
     } catch (e) { /* no calendar data — no banner */ }
+  })();
+
+  /* ================= seasonal theme =================
+     Thanksgiving 2026: on Nov 19-30 only, then the site returns to normal by itself.
+     Preview any day with ?theme=thanks on the URL. */
+  (() => {
+    const SEASON = { id: 'thanks', from: [2026, 10, 19], to: [2026, 10, 30] };
+    const n0 = new Date(); const day = new Date(n0.getFullYear(), n0.getMonth(), n0.getDate());
+    const active = /[?&]theme=thanks\b/.test(location.search) ||
+      (day >= new Date(SEASON.from[0], SEASON.from[1], SEASON.from[2]) && day <= new Date(SEASON.to[0], SEASON.to[1], SEASON.to[2]));
+    if (!active || root.classList.contains('th-thanks')) return;
+    root.classList.add('th-thanks');
+    /* warm autumn accents: the rose becomes pumpkin, the blush becomes warm cream */
+    const SWAP = { 'rgb(185, 140, 131)': '#A4572A', 'rgb(245, 231, 227)': '#F6E7D6', 'rgb(234, 213, 207)': '#EBD3B8' };
+    const swap = v => { let o = v; for (const k in SWAP) o = o.split(k).join(SWAP[k]); return o; };
+    const PROPS = ['color', 'background-color', 'background-image', 'border-color', 'border-top-color', 'border-bottom-color', 'border-left-color', 'border-right-color', 'fill', 'stroke', 'text-decoration-color', 'outline-color'];
+    const fixStyle = st => { PROPS.forEach(p => { const v = st.getPropertyValue(p); if (v && /rgb\((185, 140, 131|245, 231, 227|234, 213, 207)\)/.test(v)) st.setProperty(p, swap(v), st.getPropertyPriority(p)); });
+      ['--rose', '--blush'].forEach(p => { const v = st.getPropertyValue(p).trim().toUpperCase(); if (v === '#B98C83') st.setProperty(p, '#A4572A'); if (v === '#F5E7E3') st.setProperty(p, '#F6E7D6'); }); };
+    const walk = rules => { for (const r of rules) { try { if (r.style) fixStyle(r.style); if (r.cssRules) walk(r.cssRules); } catch (e) {} } };
+    const paint = () => {
+      for (const sh of doc.styleSheets) { try { walk(sh.cssRules); } catch (e) {} }
+      qsa('[style]').forEach(el => fixStyle(el.style));
+    };
+    paint(); setTimeout(paint, 900);
+    /* French word in the Home hero: grâce becomes merci */
+    const ghost = qs('.ghost-word'); if (ghost && /gr[aâ]ce/i.test(ghost.textContent)) ghost.textContent = 'merci';
+    if (opts.page !== 'home') return;
+    /* a note from Miss BeBe, just under the hero */
+    const hero = qs('.hero');
+    if (hero && !qs('.thanks-note')) {
+      const note = ce('section', 'thanks-note');
+      note.setAttribute('aria-label', 'A Thanksgiving note from Miss BeBe');
+      note.style.cssText = 'background:#F6E7D6;color:#1D2647;text-align:center;padding:2.4rem 24px 2.6rem;position:relative;z-index:2';
+      note.innerHTML = '<p style="margin:0 0 .2rem;font-family:Sacramento,cursive;font-size:2rem;line-height:1.1;color:#A4572A">with gratitude</p>'
+        + '<p style="margin:0 auto;max-width:40rem;font-family:\'Bodoni Moda\',serif;font-size:clamp(1.15rem,2.4vw,1.45rem);line-height:1.5">Thank you for sharing your dancers with us. We are grateful for every family in our studio, and we wish you a warm and happy Thanksgiving.</p>'
+        + '<p style="margin:.9rem 0 0;font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#56618A">Miss BeBe &amp; the Barbara’s Academy faculty</p>';
+      hero.parentNode.insertBefore(note, hero.nextSibling); created.push(note);
+    }
+    /* a few slow falling leaves in the hero (off for reduced motion) */
+    if (calm || !hero) return;
+    const cv = ce('canvas', 'leaves'); cv.setAttribute('aria-hidden', 'true');
+    cv.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1';
+    if (getComputedStyle(hero).position === 'static') hero.style.position = 'relative';
+    hero.appendChild(cv); created.push(cv);
+    const ctx = cv.getContext('2d'); const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const COL = ['#A4572A', '#C08A2E', '#8E3B1F', '#B9733A'];
+    let W = 0, H = 0, ls = [];
+    const mk = init => ({ x: Math.random() * W, y: init ? Math.random() * H : -20, s: 7 + Math.random() * 7, v: 0.25 + Math.random() * 0.45,
+      a: 0.28 + Math.random() * 0.3, r: Math.random() * 6.28, vr: (Math.random() - 0.5) * 0.02, p: Math.random() * 6.28, c: COL[(Math.random() * COL.length) | 0] });
+    const size = () => { const b = hero.getBoundingClientRect(); W = b.width; H = b.height; cv.width = Math.max(1, W * dpr); cv.height = Math.max(1, H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); const n = W < 720 ? 9 : 16; ls = []; for (let i = 0; i < n; i++) ls.push(mk(true)); };
+    size(); on(window, 'resize', size);
+    let vis = true; io(es => { vis = es[0].isIntersecting; }, {}).observe(cv);
+    const leaf = k => { ctx.save(); ctx.translate(k.x, k.y); ctx.rotate(k.r); ctx.globalAlpha = k.a; ctx.fillStyle = k.c;
+      ctx.beginPath(); ctx.moveTo(0, -k.s); ctx.quadraticCurveTo(k.s * 0.75, -k.s * 0.2, 0, k.s); ctx.quadraticCurveTo(-k.s * 0.75, -k.s * 0.2, 0, -k.s); ctx.fill();
+      ctx.globalAlpha = k.a * 0.8; ctx.strokeStyle = '#FBFAF7'; ctx.lineWidth = 0.7; ctx.beginPath(); ctx.moveTo(0, -k.s * 0.8); ctx.lineTo(0, k.s * 1.15); ctx.stroke(); ctx.restore(); };
+    let t = 0;
+    loop(() => { if (!vis || doc.hidden) return; t += 0.01; ctx.clearRect(0, 0, W, H);
+      for (let i = 0; i < ls.length; i++) { const k = ls[i]; k.y += k.v; k.x += Math.sin(t + k.p) * 0.45; k.r += k.vr + Math.sin(t * 1.3 + k.p) * 0.004;
+        if (k.y > H + 20) { ls[i] = mk(false); continue; } leaf(k); }
+      ctx.globalAlpha = 1; });
   })();
 
   /* ================= teardown ================= */
