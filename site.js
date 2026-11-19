@@ -654,11 +654,12 @@ export function initSite(opts = {}) {
   /* ================= mobile quick-action bar ================= */
   if (opts.actionBar !== false && !qs('.m-action')) {
     const st = ce('style');
-    st.textContent = '.m-action{display:none}@media (max-width:720px){.m-action{position:fixed;left:0;right:0;bottom:0;z-index:150;display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:8px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(251,250,247,.96);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid rgba(29,38,71,.13)}.m-action a{display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:999px;border:1px solid #1D2647;color:#1D2647;text-decoration:none;font:500 .78rem/1 Jost,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase}.m-action a.m-main{background:#1D2647;color:#FBFAF7}body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}}@media print{.m-action{display:none!important}}';
+    st.textContent = '.m-action{display:none}@media (max-width:720px){.m-action{position:fixed;left:0;right:0;bottom:0;z-index:150;display:grid;grid-template-columns:.8fr 1.15fr 1.1fr 1.1fr;gap:8px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(251,250,247,.96);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid rgba(29,38,71,.13)}.m-action a{display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:999px;border:1px solid #1D2647;color:#1D2647;text-decoration:none;font:500 .7rem/1 Jost,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase}.m-action a.m-main{background:#1D2647;color:#FBFAF7}body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}}@media print{.m-action{display:none!important}}';
     const bar = ce('nav', 'm-action');
     bar.setAttribute('aria-label', 'Quick actions');
     bar.innerHTML = '<a href="tel:+12484767074">Call</a>'
       + '<a href="https://www.google.com/maps/search/?api=1&query=24405+Halsted+Rd+Farmington+Hills+MI+48335" target="_blank" rel="noopener">Directions</a>'
+      + '<a href="/classes#schedule">Schedule</a>'
       + '<a class="m-main" href="https://app.jackrabbitclass.com/regv2.asp?id=558705" target="_blank" rel="noopener">Register</a>';
     doc.head.appendChild(st); doc.body.appendChild(bar); created.push(st, bar);
   }
@@ -687,7 +688,7 @@ export function initSite(opts = {}) {
       (m.EVENTS || []).forEach(ev => {
         if (hit || ev.type !== 'closed') return;
         const r = range(ev.when); if (!r) return;
-        const lead = new Date(r[0]); lead.setDate(lead.getDate() - 3);
+        const lead = new Date(r[0]); lead.setDate(lead.getDate() - ((r[1] - r[0]) / 864e5 >= 2 ? 10 : 3));
         if (today >= lead && today <= r[1]) hit = { ev, r };
       });
       if (!hit || qs('.closure-bar')) return;
@@ -700,10 +701,12 @@ export function initSite(opts = {}) {
         text += ' Classes resume ' + fmt(back) + '.'; }
       const bar = ce('div', 'closure-bar');
       bar.setAttribute('role', 'status');
-      bar.style.cssText = 'background:#F5E7E3;color:#1D2647;text-align:center;padding:.55rem 24px;font-size:.78rem;letter-spacing:.06em;line-height:1.5';
-      bar.textContent = text + ' ';
+      const hideAnn = ce('style'); hideAnn.textContent = '@media (max-width:720px){.announce{display:none!important}}'; doc.head.appendChild(hideAnn); created.push(hideAnn);
+      bar.style.cssText = 'background:#A4572A;color:#FFFFFF;text-align:center;padding:.75rem 24px;font-size:.9rem;font-weight:500;letter-spacing:.04em;line-height:1.5';
+      const strong = ce('strong'); strong.textContent = 'Holiday closure: '; strong.style.cssText = 'font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;margin-right:.3rem';
+      bar.appendChild(strong); bar.append(text + ' ');
       const ln = ce('a'); ln.href = '/classes#calendar'; ln.textContent = 'See the calendar';
-      ln.style.cssText = 'color:#1D2647;font-weight:500;margin-left:.35rem;white-space:nowrap';
+      ln.style.cssText = 'color:#FFFFFF;font-weight:600;margin-left:.35rem;white-space:nowrap;text-decoration:underline';
       bar.appendChild(ln);
       const anchor = qs('.announce') || qs('.nav');
       if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(bar, anchor); else doc.body.insertBefore(bar, doc.body.firstChild);
@@ -718,10 +721,12 @@ export function initSite(opts = {}) {
     const SEASONS = [
       { id: 'thanks', from: [2026, 10, 18], to: [2026, 10, 30], accent: '#A4572A', soft: '#F6E7D6', line: '#EBD3B8', ghost: 'merci',
         script: 'with gratitude', particles: 'leaves',
-        note: 'Thank you for sharing your dancers with us. We are grateful for every family in our studio, and we wish you a warm and happy Thanksgiving.' },
+        note: 'Thank you for sharing your dancers with us. We are grateful for every family in our studio, and we wish you a warm and happy Thanksgiving.',
+        extra: 'The studio is closed Tuesday, Nov 24 through Sunday, Nov 29. Classes resume Monday, Nov 30.' },
       { id: 'winter', from: [2026, 11, 1], to: [2027, 0, 3], accent: '#2F5D62', soft: '#E8EEF3', line: '#CBD8E2', ghost: 'joie',
         script: 'happy holidays', particles: 'snow',
-        note: 'Wishing your family a joyful holiday season. Thank you for a wonderful year of dancing with us, and we look forward to seeing you in the new year.' }
+        note: 'Wishing your family a joyful holiday season. Thank you for a wonderful year of dancing with us, and we look forward to seeing you in the new year.',
+        extra: 'The studio is closed Monday, Dec 21 through Sunday, Jan 3. Classes resume Monday, Jan 4.' }
     ];
     const n0 = new Date(); const day = new Date(n0.getFullYear(), n0.getMonth(), n0.getDate());
     const q = /[?&]theme=([a-z]+)/.exec(location.search);
@@ -749,7 +754,8 @@ export function initSite(opts = {}) {
       note.style.cssText = 'background:' + S.soft + ';color:#1D2647;text-align:center;padding:2.4rem 24px 2.6rem;position:relative;z-index:2';
       note.innerHTML = '<p style="margin:0 0 .2rem;font-family:Sacramento,cursive;font-size:2rem;line-height:1.1;color:' + S.accent + '">' + S.script + '</p>'
         + '<p style="margin:0 auto;max-width:40rem;font-family:\'Bodoni Moda\',serif;font-size:clamp(1.15rem,2.4vw,1.45rem);line-height:1.5">' + S.note + '</p>'
-        + '<p style="margin:.9rem 0 0;font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#56618A">Miss BeBe &amp; the Barbara’s Academy faculty</p>';
+        + '<p style="margin:.9rem 0 0;font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#56618A">Miss BeBe &amp; the Barbara’s Academy faculty</p>'
+        + (S.extra ? '<p style="display:inline-block;margin:1.3rem 0 0;padding:.6rem 1.1rem;border-radius:999px;background:#FBFAF7;border:1px solid ' + S.accent + ';font-size:.9rem;font-weight:500;color:#1D2647">' + S.extra + ' <a href="/classes#calendar" style="color:' + S.accent + ';font-weight:600;white-space:nowrap">See the calendar</a></p>' : '');
       hero.parentNode.insertBefore(note, hero.nextSibling); created.push(note);
     }
     /* slow falling leaves or snow in the hero (off for reduced motion) */
@@ -799,6 +805,9 @@ export function initSite(opts = {}) {
       sp.textContent = next.type === 'closed' ? 'Closed \u00b7 ' + String(next.title).replace(/^Studio closed:\s*/i, '') : String(next.title).replace(/!$/, '');
     } catch (e) {}
   })();
+
+  /* re-scroll to #anchor after the page finishes drawing (content above it can shift) */
+  if (location.hash && location.hash.length > 1) { const id = decodeURIComponent(location.hash.slice(1)); [700, 1600].forEach(ms => setTimeout(() => { if (dead) return; const el = doc.getElementById(id); if (el && Math.abs(el.getBoundingClientRect().top) > 120 && window.scrollY < el.offsetTop + 400) el.scrollIntoView({ block: 'start' }); }, ms)); }
 
   /* ================= teardown ================= */
   const teardown = () => {

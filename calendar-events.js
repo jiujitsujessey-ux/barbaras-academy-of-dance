@@ -32,6 +32,6 @@ export const EVENTS = [
   { month: "May", when: "Sat \u00b7 May 1", title: "Recital tickets on sale", type: "tickets", note: "" },
   { month: "May", when: "Mid-May", title: "Picture days at Barbara’s Academy", type: "event", note: "Photographer: Barbara’s Academy alumna Mati Ficara" },
   { month: "May", when: "May 28\u201331", title: "Studio closed: Memorial weekend", type: "closed", note: "" },
-  { month: "June", when: "Mid-June", title: "Dress rehearsal", type: "performance", note: "Details sent to families in spring" },
-  { month: "June", when: "~Tue \u00b7 June 15", title: "Year-end recital", type: "performance", note: "Date to be finalized \u00b7 The night every dancer works toward" }
+  { month: "June", when: "Date TBA", title: "Dress rehearsal", type: "performance", note: "The week of the recital \u00b7 details sent to families in spring" },
+  { month: "June", when: "Sat \u00b7 June 5", title: "Year-end recital", type: "performance", note: "The night every dancer works toward" }
 ];
