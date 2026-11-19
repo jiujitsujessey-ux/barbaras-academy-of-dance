@@ -1281,7 +1281,7 @@
       <p>
         Under Miss BeBe's direction the company has earned <strong>eight national titles</strong>, and in 2025
         the Michigan Dance Council named her its <strong>Private Sector Educator of the Year</strong>.
-        With Miss Catherine, Mr. Bill, Miss Ava, and Miss Meredith teaching and Miss Kim running the office, classes start
+        With Miss Catherine, Mr. Bill, Miss Ava, Miss Meredith, and Miss Nicole teaching and Miss Kim running the office, classes start
         with a strong ballet foundation, and the proof is in where our students have landed.
       </p>
       <div class="dir-creds">
@@ -1323,6 +1323,11 @@
       <div class="fac-card reveal">
         <img data-lz="/assets/alumni/th-meredith.jpg" alt="Miss Meredith, smiling in her GVSU Laker Dance Team uniform" loading="lazy" decoding="async">
         <p class="fac-name">Miss Meredith</p>
+        <p class="fac-role">Instructor</p>
+      </div>
+      <div class="fac-card reveal">
+        <img data-lz="/assets/staff/miss-nicole.jpg" alt="Miss Nicole, smiling in her Detroit Lions cheerleading uniform" loading="lazy" decoding="async">
+        <p class="fac-name">Miss Nicole</p>
         <p class="fac-role">Instructor</p>
       </div>
       <div class="fac-card reveal">
@@ -1825,7 +1830,7 @@ class Component extends DCLogic {
   }
   facDragInit(el) {
     let down = false, startX = 0, startIdx = 0, moved = false;
-    const n = 7, step = 360 / n;
+    const n = (document.querySelectorAll('#fac-ring .fac-card').length || 8), step = 360 / n;
     el.addEventListener('pointerdown', e => {
       down = true; moved = false; startX = e.clientX; startIdx = this.facIdx;
       el.setPointerCapture(e.pointerId);
